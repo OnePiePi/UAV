@@ -25,7 +25,7 @@ def dehaze_image(image_path):
 	data_hazy = data_hazy.cuda().unsqueeze(0)
 
 	dehaze_net = net.dehaze_net().cuda()
-	dehaze_net.load_state_dict(torch.load('snapshots/dehazer.pth'))
+	dehaze_net.load_state_dict(torch.load('snapshots/Epoch9.pth'))
 
 	clean_image = dehaze_net(data_hazy)
 	torchvision.utils.save_image(torch.cat((data_hazy, clean_image),0), "results/" + image_path.split("/")[-1])
